@@ -11,32 +11,27 @@ namespace Lab11
     {
         public static string TimeOfWorkList<T>(LinkedList<T> list, T obj)
         {
-            bool flag;
             var stopWatch = new Stopwatch();
             stopWatch.Start();
-            flag = list.Contains(obj);
+            var flag = list.Contains(obj);
             stopWatch.Stop();
-            TimeSpan ts = stopWatch.Elapsed;
-            string elapsedTime = $"{ts.TotalMilliseconds} Найден: {flag}";
-            return elapsedTime;
+            return stopWatch.Elapsed.TotalMilliseconds.ToString() + $" Найден: {flag}";
         }
-        public static string TimeOfWorkDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary, TKey key)
+        public static string TimeOfWorkDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary, TKey key) where TKey: notnull
         {
-            bool flag;
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            flag = dictionary.ContainsKey(key);
-            stopwatch.Stop();
-            return stopwatch.Elapsed.TotalMilliseconds.ToString() + $" Найден: {flag}";
+            var stopWatch = new Stopwatch();
+            stopWatch.Start();
+            var flag = dictionary.ContainsKey(key);
+            stopWatch.Stop();
+            return stopWatch.Elapsed.TotalMilliseconds.ToString() + $" Найден: {flag}";
         }
-        public static string TimeOfWorkDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary, TValue value)
+        public static string TimeOfWorkDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary, TValue value) where TKey : notnull
         {
-            bool flag;
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            flag = dictionary.ContainsValue(value);
-            stopwatch.Stop();
-            return stopwatch.Elapsed.TotalMilliseconds.ToString() + $" Найден: {flag}";
+            var stopWatch = new Stopwatch();
+            stopWatch.Start();
+            var flag = dictionary.ContainsValue(value);
+            stopWatch.Stop();
+            return stopWatch.Elapsed.TotalMilliseconds.ToString() + $" Найден: {flag}";
         }
     }
 }
